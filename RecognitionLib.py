@@ -3,6 +3,7 @@ import parselmouth
 from parselmouth.praat import call
 import pandas as pd
 import numpy as np
+from flask import jsonify
 import sklearn
 
 
@@ -83,6 +84,38 @@ def predict(clf, wavPath):
     resp = str(resp)
 
     if resp == "[1.]":
-        return True
+        #return True
+        return jsonify({
+            "parkison": "true",
+            "Jitter_rel": localJitter,
+            "Jitter_abs": localabsoluteJitter,
+            "Jitter_RAP": rapJitter,
+            "Jitter_PPQ": ppq5Jitter,
+            "Shim_loc": localShimmer,
+            "Shim_dB": localdbShimmer,
+            "Shim_APQ3": apq3Shimmer,
+            "Shim_APQ5": aqpq5Shimmer,
+            "Shi_APQ11": apq11Shimmer,
+            "hnr05": hnr05,
+            "hnr15": hnr15,
+            "hnr25": hnr25
+
+        })
     else:
-        return False
+        return jsonify({
+            "parkison": "false",
+            "Jitter_rel": localJitter,
+            "Jitter_abs": localabsoluteJitter,
+            "Jitter_RAP": rapJitter,
+            "Jitter_PPQ": ppq5Jitter,
+            "Shim_loc": localShimmer,
+            "Shim_dB": localdbShimmer,
+            "Shim_APQ3": apq3Shimmer,
+            "Shim_APQ5": aqpq5Shimmer,
+            "Shi_APQ11": apq11Shimmer,
+            "hnr05": hnr05,
+            "hnr15": hnr15,
+            "hnr25": hnr25
+
+        })
+        #return False
