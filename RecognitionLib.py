@@ -86,7 +86,7 @@ def predict(clf, wavPath):
     if resp == "[1.]":
         #return True
         return jsonify({
-            "parkison": "true",
+            "parkinson": "true",
             "Jitter_rel": localJitter,
             "Jitter_abs": localabsoluteJitter,
             "Jitter_RAP": rapJitter,
@@ -103,7 +103,7 @@ def predict(clf, wavPath):
         })
     else:
         return jsonify({
-            "parkison": "false",
+            "parkinson": "false",
             "Jitter_rel": localJitter,
             "Jitter_abs": localabsoluteJitter,
             "Jitter_RAP": rapJitter,
