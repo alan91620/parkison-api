@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from RecognitionLib import *
 app = Flask(__name__)
 
-@app.route('/api/predict', methods=['GET', 'POST'])
+@app.route('/predict', methods=['GET', 'POST'])
 def add_message():
     content = request.json
     path = (content['path'])
